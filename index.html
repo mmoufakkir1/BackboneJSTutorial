@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SWAPI BackboneJS UI</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="container clearfix">
+                <h1 id="logo">
+                    <a id="title" href=""> Star Wars API UI</a>
+                </h1>
+                <nav>
+                    <a href="#people">People </a>
+                    <a href="#films">Films </a>
+                    <a href="#starships">Starships </a>
+                    <a href="#vehicles">Vehicles </a>
+                    <a href="#species">Species </a>
+                    <a href="#planets">Planets </a>
+                </nav>
+            </div>
+        </header>
+        <!-- /header -->
+        <div id="main">
+            <div id="content">
+                <section>
+                    <div id="contentSearch">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <div class="input-group-btn bs-dropdown-to-select-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle as-is bs-dropdown-to-select" data-toggle="dropdown" tabindex="-1">
+                                            <span data-bind="bs-drp-sel-label">People</span>
+                                            <input type="hidden" name="country_path" data-bind="bs-drp-sel-value" value="People">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" style=" max-height: 300px; ">
+                                            <!-- Loop -->
+                                            <li data-value="People"><a href="#people">People </a></li>
+                                            <li data-value="Films"><a href="#films">Films </a></li>
+                                            <li data-value="Starships"><a href="#starships">Starships </a></li>
+                                            <li data-value="Vehicles"><a href="#vehicles">Vehicles </a></li>
+                                            <li data-value="Species"><a href="#species">Species </a></li>
+                                            <li data-value="Planets"><a href="#planets">Planets </a></li>
+                                            <!-- END Loop -->
+                                        </ul>
+                                    </div>
+                                    <input type="text" class="form-control input-md" placeholder="Search" />
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-info btn-md" type="button">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+                        </div>
+                    </div>
+                    <div id="contentPeople"> </div>
+                    <div id="contentPerson"></div>
+                    <div id="contentPlanet"></div>
+                </section>
+                <section id="sectionTemplates">
+                </section>
+            </div>
+            <!-- Templates -->
+            <script id="peopleTemplate" type="text/template">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>height</th>
+                            <th>mass</th>
+                            <th>hairColor</th>
+                            <th>skinColor</th>
+                            <th>eyeColor</th>
+                            <th>birth_year</th>
+                            <th>gender</th>
+                            <th>homeWorld</th>
+                            <th>films</th>
+                            <th>created</th>
+                            <th>edited</th>
+                            <th>url</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contentItemPeople"> </tbody>
+                </table>
+            </script>
+            <script id="peopleItemTemplate" type="text/template">
+                <tr>
+                    <td>
+                        <%= name %>
+                    </td>
+                    <td>
+                        <%= height %>
+                    </td>
+                    <td>
+                        <%= mass %>
+                    </td>
+                    <td>
+                        <%= hair_color %>
+                    </td>
+                    <td>
+                        <%= skin_color %>
+                    </td>
+                    <td>
+                        <%= eye_color %>
+                    </td>
+                    <td>
+                        <%= birth_year %>
+                    </td>
+                    <td>
+                        <%= gender %>
+                    </td>
+                    <td>
+                        <%= homeworld %>
+                    </td>
+                    <td>
+                        <%= films %>
+                    </td>
+                    <td>
+                        <%= created %>
+                    </td>
+                    <td>
+                        <%= edited %>
+                    </td>
+                    <td>
+                        <%= url %>
+                    </td>
+                </tr>
+
+            </script>
+            <script id="personTemplate" type="text/template">
+                <form>
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label">name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" value="
+                    <%=name %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="height" class="col-sm-2 col-form-label">height:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="height" name="height" value="
+                    <%=height %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="mass" class="col-sm-2 col-form-label">mass:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="mass" name="mass" value="
+                    <%=mass %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="hair_color" class="col-sm-2 col-form-label">hair_color:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="hair_color" name="hair_color" value="
+                    <%=hair_color %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="skin_color" class="col-sm-2 col-form-label">skin_color:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="skin_color" name="skin_color" value="
+                    <%=skin_color %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="eye_color" class="col-sm-2 col-form-label">eye_color:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="eye_color" name="eye_color" value="
+                    <%=eye_color %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="birth_year" class="col-sm-2 col-form-label">birth_year:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="birth_year" name="birth_year" value="
+                    <%=birth_year %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="gender" class="col-sm-2 col-form-label">gender:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="gender" name="gender" value="
+                    <%=gender %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="homeworld" class="col-sm-2 col-form-label">homeworld:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="homeworld" name="homeworld" value="
+                    <%=homeworld %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="films" class="col-sm-2 col-form-label">films:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="films" name="films" value="
+                    <%=films %>" disabled />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="created" class="col-sm-2 col-form-label">created:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="created" name="created" value="
+                    <%=created %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="edited" class="col-sm-2 col-form-label">edited:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="edited" name="edited" value="
+                    <%=edited %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="url" class="col-sm-2 col-form-label">url:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="url" name="url" value="
+                    <%=url %>" disabled />
+                        </div>
+                    </div>
+                </form>
+            </script>
+            <script id="planetTemplate" type="text/template">
+                <form>
+                    <div class="form-group row">
+                        <label for="climate" class="col-sm-2 col-form-label">climate:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="climate" name="climate" value="
+                    <%=climate %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="diameter" class="col-sm-2 col-form-label">diameter:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="diameter" name="diameter" value="
+                    <%=diameter %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="gravity" class="col-sm-2 col-form-label">gravity:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="gravity" name="gravity" value="
+                    <%=gravity %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label">name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" value="
+                    <%=name %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="orbital_period" class="col-sm-2 col-form-label">orbital_period:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="orbital_period" name="orbital_period" value="
+                    <%=orbital_period %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="population" class="col-sm-2 col-form-label">population:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="population" name="population" value="
+                    <%=population %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="residents" class="col-sm-2 col-form-label">residents:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="residents" name="residents" value="
+                    <%=residents %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="rotation_period" class="col-sm-2 col-form-label">rotation_period:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="rotation_period" name="rotation_period" value="
+                    <%=rotation_period %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="surface_water" class="col-sm-2 col-form-label">surface_water:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="surface_water" name="surface_water" value="
+                    <%=surface_water %>" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="terrain" class="col-sm-2 col-form-label">terrain:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="terrain" name="terrain" value="
+                    <%=terrain %>" disabled />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="url" class="col-sm-2 col-form-label">url:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="url" name="url" value="
+                    <%=url %>" disabled />
+                        </div>
+                    </div>
+
+                </form>
+            </script>
+        </div>
+    </div>
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js "></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="app.js ">
+    </script>
+    <script src="person.js ">
+    </script>
+    <script src="people.js ">
+    </script>
+    <script src="planets.js ">
+    </script>
+    <script src="main.js ">
+    </script>
+</body>
+
+</html>
