@@ -35,7 +35,7 @@
          console.log("People view is initialized");
          //this.bind("reset", this.render, this);
      },
-     el: '#contentPeople',
+     el: '#sectionTemplates',
      template: _.template($('#peopleTemplate').html()),
      render: function() {
          this.$el.empty();

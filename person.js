@@ -34,14 +34,21 @@
      initialize: function() {
          console.log("Person view is initialized");
      },
-     el: '#contentPerson',
+     el: '#sectionTemplates',
      template: _.template($('#personTemplate').html()),
+     //template: _.template($.get('template_person.html')),
      render: function() {
          this.$el.empty();
          var personTemplate =
              this.template(this.model.models[0].toJSON());
          this.$el.append(personTemplate);
-
+         //  var data = this.model.models[0].toJSON();
+         //  $.get('template_person.html', function(data) {
+         //      template = _.template(data, null);
+         //      that.$el.html(template);
+         //  }, 'html');
          return this;
      }
+
+
  });

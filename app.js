@@ -1,5 +1,5 @@
+// dropdown dynamic populate
 $(document).ready(function(e) {
-
     $(document).on('click', '.bs-dropdown-to-select-group .dropdown-menu li', function(event) {
         var $target = $(event.currentTarget);
         $target.closest('.bs-dropdown-to-select-group')
@@ -11,5 +11,4 @@ $(document).ready(function(e) {
         console.log($target.text());
         return false;
     });
-
 });

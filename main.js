@@ -12,6 +12,7 @@
         },
         routes: {
             '': '',
+            'person': 'person',
             'people': 'people',
             'films': 'films',
             'starships': 'starships',
@@ -20,6 +21,7 @@
             'planets': 'planets',
         },
         person: function() {
+            this.$el.empty();
             var personCollection = new PersonCollection();
             var personView = new PersonView({ model: personCollection });
             personCollection.fetch({
@@ -27,6 +29,7 @@
             });
         },
         people: function() {
+            this.navigate("", { trigger: true, replace: true });
             var peoplesCollection = new PeoplesCollection();
             var peopleView = new PeopleView();
             peopleView.render();
@@ -38,6 +41,7 @@
             });
         },
         planets: function() {
+            this.navigate("", { trigger: true, replace: true });
             var planetsCollection = new PlanetsCollection();
             var planetsView = new PlanetsView({ model: planetsCollection });
             planetsCollection.fetch({
@@ -48,6 +52,7 @@
 
     new App.Router;
     Backbone.history.start();
+
 
 
 })(jQuery);

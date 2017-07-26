@@ -29,7 +29,7 @@ var PlanetsView = Backbone.View.extend({
     initialize: function() {
         console.log('planets View is initialized');
     },
-    el: '#contentPlanet',
+    el: '#sectionTemplates',
     template: _.template($('#planetTemplate').html()),
     render: function() {
         this.$el.empty();
