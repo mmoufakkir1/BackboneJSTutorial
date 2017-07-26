@@ -6,7 +6,59 @@
         Router: {}
     };
 
+    // var mySearchView = Backbone.View.extend({
+    //     el: '#searchButton',
+    //     initialize: function() {
+    //         console.log("initialize");
+    //     },
+    //     events: {
+    //         'click': 'search'
+    //     },
+    //     search: function() {
+    //         var searchInput = $('input[id=searchInput]');
+    //         var searchLabel = $('input[id=searchLabel]');
+    //         searchInput.focus();
+    //         console.log("searchInput : " + searchInput.val() +
+    //             ", searchLabel: " + searchLabel.val());
+
+    //         //App.navigate(searchInput.val().toLowerCase(), { trigger: true, replace: true });
+    //     }
+    // });
+    // new mySearchView();
+
     App.Router = Backbone.Router.extend({
+        // events: function() {
+        //     console.log('Router events  enter');
+        //     var searchInput = $('input[id=searchInput]');
+        //     var searchLabel = $('input[id=searchLabel]');
+        //     $('#searchButton').click(function(e) {
+        //         // e.preventDefault();
+
+        //         searchInput.focus();
+        //         console.log("searchInput : " + searchInput.val() +
+        //             ", searchLabel: " + searchLabel.val());
+
+        //         App.navigate(searchInput.val().toLowerCase(), { trigger: true, replace: true });
+
+        //     });
+        // },
+        // el: '#searchButton',
+        // events: {
+        //     'click': 'search'
+        //         // 'click #searchButton': 'search'
+        // },
+        // search: function() {
+        //     console.log('Router events  enter');
+        // },
+
+        // events: function() {
+        //     $('#searchButton').click(function(e) {
+        //         e.preventDefault();
+        //         console.log('Router events  enter');
+        //         //App.navigate(e.target.pathname, true);
+        //     });
+        // },
+
         initialize: function() {
             console.log('Router enter');
         },
@@ -21,7 +73,6 @@
             'planets': 'planets',
         },
         person: function() {
-            this.$el.empty();
             var personCollection = new PersonCollection();
             var personView = new PersonView({ model: personCollection });
             personCollection.fetch({
@@ -29,7 +80,6 @@
             });
         },
         people: function() {
-            this.navigate("", { trigger: true, replace: true });
             var peoplesCollection = new PeoplesCollection();
             var peopleView = new PeopleView();
             peopleView.render();
@@ -41,7 +91,6 @@
             });
         },
         planets: function() {
-            this.navigate("", { trigger: true, replace: true });
             var planetsCollection = new PlanetsCollection();
             var planetsView = new PlanetsView({ model: planetsCollection });
             planetsCollection.fetch({
@@ -52,7 +101,4 @@
 
     new App.Router;
     Backbone.history.start();
-
-
-
 })(jQuery);

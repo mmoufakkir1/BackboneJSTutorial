@@ -36,7 +36,7 @@
      },
      el: '#sectionTemplates',
      template: _.template($('#personTemplate').html()),
-     //template: _.template($.get('template_person.html')),
+     //template: _.template('template_person.html'),
      render: function() {
          this.$el.empty();
          var personTemplate =

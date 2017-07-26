@@ -45,14 +45,15 @@
  });
 
  var PeopleItemView = Backbone.View.extend({
-     initialize: function() {
-         console.log("People Item view is initialized");
-     },
      el: '#contentItemPeople',
      template: _.template($('#peopleItemTemplate').html()),
+     initialize: function() {
+         console.log("People Item view is initialized");
+         this.listenTo(this.model, "change", this.render);
+     },
      render: function() {
+         this.$el.empty();
          _.each(this.model.models[0].attributes.results, function(people) {
-             //console.log(people);
              var peopleTemplate =
                  this.template(people);
              this.$el.append(peopleTemplate);
