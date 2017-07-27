@@ -40,9 +40,6 @@
      render: function() {
          this.$el.empty();
          this.$el.append(this.template);
-         //  $('#searchButton').unbind('click').bind('click', function() {
-         //      console.log('I hear you v1');
-         //  });         
          return this;
      }
  });
@@ -56,9 +53,10 @@
      },
      render: function() {
          this.$el.empty();
-         _.each(this.model.models[0].attributes.results, function(people) {
+         console.log(this.model.models[0].attributes.results.length);
+         _.each(this.model.models[0].attributes.results, function(data) {
              var peopleTemplate =
-                 this.template(people);
+                 this.template(data);
              this.$el.append(peopleTemplate);
          }, this);
          return this;

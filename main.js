@@ -1,54 +1,47 @@
-(function($) {
-    window.App = {
-        Models: {},
-        Collections: {},
-        Views: {},
-        Router: {}
-    };
+// dropdown dynamic populate
+$(document).ready(function(e) {
+    $(document).on('click', '.bs-dropdown-to-select-group .dropdown-menu li', function(event) {
+        var $target = $(event.currentTarget);
+        $target.closest('.bs-dropdown-to-select-group')
+            .find('[data-bind="bs-drp-sel-value"]').val($target.attr('data-value'))
+            .end()
+            .children('.dropdown-toggle').dropdown('toggle');
+        $target.closest('.bs-dropdown-to-select-group')
+            .find('[data-bind="bs-drp-sel-label"]').text($target.attr('data-value')); /*$target.text()*/
 
-
-
-    App.Router = Backbone.Router.extend({
-        initialize: function() {
-            console.log('Router enter');
-        },
-        routes: {
-            '': '',
-            'person': 'person',
-            'people': 'people',
-            'films': 'films',
-            'starships': 'starships',
-            'vehicles': 'vehicles',
-            'species': 'species',
-            'planets': 'planets',
-        },
-        person: function() {
-            var personCollection = new PersonCollection();
-            var personView = new PersonView({ model: personCollection });
-            personCollection.fetch({
-                success: function() { personView.render(); }
-            });
-        },
-        people: function() {
-            var peoplesCollection = new PeoplesCollection();
-            var peopleView = new PeopleView();
-            peopleView.render();
-            var peopleItemView = new PeopleItemView({ model: peoplesCollection });
-            peoplesCollection.fetch({
-                success: function() {
-                    peopleItemView.render();
-                }
-            });
-        },
-        planets: function() {
-            var planetsCollection = new PlanetsCollection();
-            var planetsView = new PlanetsView({ model: planetsCollection });
-            planetsCollection.fetch({
-                success: function() { planetsView.render(); }
-            });
+        //update placeholder
+        if (($target.text().trim() == 'People') ||
+            ($target.text().trim() == 'Species') ||
+            ($target.text().trim() == 'Planets')) {
+            var searchInput = $('input[id=searchInput]');
+            searchInput.attr("placeholder", "Search Fields: Name");
         }
+
+        if ($target.text().trim() == 'Films') {
+            var searchInput = $('input[id=searchInput]');
+            searchInput.attr("placeholder", "Search Fields: title");
+        }
+
+        if (($target.text().trim() == 'Starships') ||
+            ($target.text().trim() == 'Vehicles')) {
+            var searchInput = $('input[id=searchInput]');
+            searchInput.attr("placeholder", "Search Fields: name or model");
+        }
+
+        console.log($target.text());
+        return false;
     });
 
-    new App.Router;
-    Backbone.history.start();
-})(jQuery);
+    //search button
+    document.getElementById("searchButton").addEventListener('click', function() {
+        var searchInput = $('input[id=searchInput]').val().toLowerCase().trim();
+        var searchLabel = $('input[id=searchLabel]').val().toLowerCase().trim();
+        if (searchInput.length > 0) {
+            console.log("searchInput : " + searchInput +
+                ", searchLabel: " + searchLabel);
+            location.href = "#" + searchLabel + ":" + searchInput;
+        } else {
+            alert("no search paramter");
+        }
+    });
+});

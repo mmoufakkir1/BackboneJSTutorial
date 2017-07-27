@@ -39,9 +39,19 @@
      //template: _.template('template_person.html'),
      render: function() {
          this.$el.empty();
-         var personTemplate =
-             this.template(this.model.models[0].toJSON());
-         this.$el.append(personTemplate);
+         console.log(this.model.models.length);
+         console.log(this.model.models[0].toJSON());
+         if (this.model.models.length === 1) {
+             var personTemplate =
+                 this.template(this.model.models[0].toJSON());
+             this.$el.append(personTemplate);
+         } else {
+             _.each(this.model.models[0].attributes.results, function(data) {
+                 var peopleTemplate =
+                     this.template(data);
+                 this.$el.append(peopleTemplate);
+             }, this);
+         }
          return this;
      }
 
