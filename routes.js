@@ -14,12 +14,17 @@
             '': '',
             'person': 'person',
             'people': 'people',
-            'people:search': 'peopleSearch',
+            'people:search': 'people',
             'films': 'films',
+            'films:search': 'films',
             'starships': 'starships',
+            'starships:search': 'starships',
             'vehicles': 'vehicles',
+            'vehicles:search': 'vehicles',
             'species': 'species',
+            'species:search': 'species',
             'planets': 'planets',
+            'planets:search': 'planets',
         },
         person: function() {
             var personCollection = new PersonCollection();
@@ -28,8 +33,13 @@
                 success: function() { personView.render(); }
             });
         },
-        people: function() {
-            var peoplesCollection = new PeoplesCollection();
+        people: function(search) {
+            var peoplesCollection;
+            if (_.isEmpty(search))
+                peoplesCollection = new PeoplesCollection();
+            else
+                peoplesCollection = new PeoplesSearchCollection(search);
+
             var peopleView = new PeopleView();
             peopleView.render();
             var peopleItemView = new PeopleItemView({ model: peoplesCollection });
@@ -39,24 +49,36 @@
                 }
             });
         },
-        peopleSearch: function(search) {
-            var peoplesSearchCollection = new PeoplesSearchCollection(search);
-            var peopleSearchView = new PeopleSearchView();
-            peopleSearchView.render();
-            var peopleSearchItemView = new PeopleSearchItemView({ model: peoplesSearchCollection });
-            peoplesSearchCollection.fetch({
+        planets: function(search) {
+            var planetsCollection;
+            if (_.isEmpty(search))
+                planetsCollection = new PlanetsCollection();
+            else
+                planetsCollection = new PlanetsSearchCollection(search);
+
+            var planetsView = new PlanetsView();
+            planetsView.render();
+            var planetsItemView = new PlanetsItemView({ model: planetsCollection });
+            planetsCollection.fetch({
+                success: function() { planetsItemView.render(); }
+            });
+        },
+        films: function(search) {
+            var filmsCollection;
+            if (_.isEmpty(search))
+                filmsCollection = new FilmsCollection();
+            else
+                filmsCollection = new FilmsSearchCollection(search);
+
+            var filmView = new FilmsView();
+            filmView.render();
+            var filmItemView = new FilmsItemView({ model: filmsCollection });
+            filmsCollection.fetch({
                 success: function() {
-                    peopleSearchItemView.render();
+                    filmItemView.render();
                 }
             });
         },
-        planets: function() {
-            var planetsCollection = new PlanetsCollection();
-            var planetsView = new PlanetsView({ model: planetsCollection });
-            planetsCollection.fetch({
-                success: function() { planetsView.render(); }
-            });
-        }
     });
 
     new App.Router;

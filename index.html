@@ -76,250 +76,39 @@
                 </section>
             </div>
             <!-- Templates -->
-            <script id="peopleTemplate" type="text/template">
+            <script id="nameTemplate" type="text/template">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>height</th>
-                            <th>mass</th>
-                            <th>hairColor</th>
-                            <th>skinColor</th>
-                            <th>eyeColor</th>
-                            <th>birth_year</th>
-                            <th>gender</th>
-                            <th>homeWorld</th>
-                            <th>films</th>
-                            <th>created</th>
-                            <th>edited</th>
-                            <th>url</th>
                         </tr>
                     </thead>
-                    <tbody id="contentItemPeople"> </tbody>
+                    <tbody id="contentItemName"> </tbody>
                 </table>
             </script>
-            <script id="peopleItemTemplate" type="text/template">
+            <script id="nameItemTemplate" type="text/template">
                 <tr>
                     <td>
                         <%= name %>
                     </td>
+                </tr>
+            </script>
+            <script id="titleTemplate" type="text/template">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contentItemTitle"> </tbody>
+                </table>
+            </script>
+            <script id="titleItemTemplate" type="text/template">
+                <tr>
                     <td>
-                        <%= height %>
-                    </td>
-                    <td>
-                        <%= mass %>
-                    </td>
-                    <td>
-                        <%= hair_color %>
-                    </td>
-                    <td>
-                        <%= skin_color %>
-                    </td>
-                    <td>
-                        <%= eye_color %>
-                    </td>
-                    <td>
-                        <%= birth_year %>
-                    </td>
-                    <td>
-                        <%= gender %>
-                    </td>
-                    <td>
-                        <%= homeworld %>
-                    </td>
-                    <td>
-                        <%= films %>
-                    </td>
-                    <td>
-                        <%= created %>
-                    </td>
-                    <td>
-                        <%= edited %>
-                    </td>
-                    <td>
-                        <%= url %>
+                        <%= title %>
                     </td>
                 </tr>
-
-            </script>
-            <script id="personTemplate" type="text/template">
-                <form>
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label">name:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" name="name" value="
-                    <%=name %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="height" class="col-sm-2 col-form-label">height:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="height" name="height" value="
-                    <%=height %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="mass" class="col-sm-2 col-form-label">mass:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="mass" name="mass" value="
-                    <%=mass %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="hair_color" class="col-sm-2 col-form-label">hair_color:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="hair_color" name="hair_color" value="
-                    <%=hair_color %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="skin_color" class="col-sm-2 col-form-label">skin_color:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="skin_color" name="skin_color" value="
-                    <%=skin_color %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="eye_color" class="col-sm-2 col-form-label">eye_color:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="eye_color" name="eye_color" value="
-                    <%=eye_color %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="birth_year" class="col-sm-2 col-form-label">birth_year:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="birth_year" name="birth_year" value="
-                    <%=birth_year %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="gender" class="col-sm-2 col-form-label">gender:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="gender" name="gender" value="
-                    <%=gender %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="homeworld" class="col-sm-2 col-form-label">homeworld:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="homeworld" name="homeworld" value="
-                    <%=homeworld %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="films" class="col-sm-2 col-form-label">films:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="films" name="films" value="
-                    <%=films %>" disabled />
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="created" class="col-sm-2 col-form-label">created:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="created" name="created" value="
-                    <%=created %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="edited" class="col-sm-2 col-form-label">edited:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="edited" name="edited" value="
-                    <%=edited %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="url" class="col-sm-2 col-form-label">url:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="url" name="url" value="
-                    <%=url %>" disabled />
-                        </div>
-                    </div>
-                </form>
-            </script>
-            <script id="planetTemplate" type="text/template">
-                <form>
-                    <div class="form-group row">
-                        <label for="climate" class="col-sm-2 col-form-label">climate:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="climate" name="climate" value="
-                    <%=climate %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="diameter" class="col-sm-2 col-form-label">diameter:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="diameter" name="diameter" value="
-                    <%=diameter %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="gravity" class="col-sm-2 col-form-label">gravity:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="gravity" name="gravity" value="
-                    <%=gravity %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label">name:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" name="name" value="
-                    <%=name %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="orbital_period" class="col-sm-2 col-form-label">orbital_period:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="orbital_period" name="orbital_period" value="
-                    <%=orbital_period %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="population" class="col-sm-2 col-form-label">population:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="population" name="population" value="
-                    <%=population %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="residents" class="col-sm-2 col-form-label">residents:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="residents" name="residents" value="
-                    <%=residents %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="rotation_period" class="col-sm-2 col-form-label">rotation_period:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="rotation_period" name="rotation_period" value="
-                    <%=rotation_period %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="surface_water" class="col-sm-2 col-form-label">surface_water:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="surface_water" name="surface_water" value="
-                    <%=surface_water %>" disabled />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="terrain" class="col-sm-2 col-form-label">terrain:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="terrain" name="terrain" value="
-                    <%=terrain %>" disabled />
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="url" class="col-sm-2 col-form-label">url:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="url" name="url" value="
-                    <%=url %>" disabled />
-                        </div>
-                    </div>
-
-                </form>
             </script>
         </div>
     </div>
@@ -334,10 +123,7 @@
     </script>
     <script src="people.js ">
     </script>
-    <script src="peopleSearch.js ">
-    </script>
-
-    <script src="person.js ">
+    <script src="films.js ">
     </script>
     <script src="planets.js ">
     </script>

@@ -40,6 +40,8 @@ $(document).ready(function(e) {
             console.log("searchInput : " + searchInput +
                 ", searchLabel: " + searchLabel);
             location.href = "#" + searchLabel + ":" + searchInput;
+
+            searchInput = $('input[id=searchInput]').val("");
         } else {
             alert("no search paramter");
         }

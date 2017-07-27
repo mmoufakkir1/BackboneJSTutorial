@@ -3,22 +3,7 @@
          console.log('Person is initialized.');
      },
      defaults: {
-         name: "",
-         height: "",
-         mass: "",
-         hair_color: "",
-         skin_color: "",
-         eye_color: "",
-         birth_year: "",
-         gender: "",
-         homeworld: "",
-         films: "",
-         species: "",
-         vehicles: "",
-         starships: "",
-         created: "",
-         edited: "",
-         url: ""
+         name: ""
      },
  });
 
@@ -35,7 +20,7 @@
          console.log("Person view is initialized");
      },
      el: '#sectionTemplates',
-     template: _.template($('#personTemplate').html()),
+     template: _.template($('#nameTemplate').html()),
      //template: _.template('template_person.html'),
      render: function() {
          this.$el.empty();
