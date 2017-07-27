@@ -40,6 +40,9 @@
      render: function() {
          this.$el.empty();
          this.$el.append(this.template);
+         //  $('#searchButton').unbind('click').bind('click', function() {
+         //      console.log('I hear you v1');
+         //  });         
          return this;
      }
  });

@@ -42,11 +42,6 @@
          var personTemplate =
              this.template(this.model.models[0].toJSON());
          this.$el.append(personTemplate);
-         //  var data = this.model.models[0].toJSON();
-         //  $.get('template_person.html', function(data) {
-         //      template = _.template(data, null);
-         //      that.$el.html(template);
-         //  }, 'html');
          return this;
      }
 
